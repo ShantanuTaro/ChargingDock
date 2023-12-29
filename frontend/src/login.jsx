@@ -1,21 +1,11 @@
+import React from "react";
 
-
-function Register() {
-  
+export const Login = () => {
   return (
-    <div className="App">
-      <div className="container">
+    <div className="container">
       <h2>Login and register form with Node.js, Express.js and MySQL</h2>
-      <h3>Register form</h3>
-      <form action="/register" method="POST">
-        <div className="form-group mb-3">
-            <label>First name</label>
-            <input type="text" className="form-control" placeholder="First name" name="firstName"/>
-        </div>
-        <div className="form-group mb-3">
-            <label>Last name</label>
-            <input type="text" className="form-control" placeholder="Last name" name="lastName"/>
-        </div>
+      <h3>Login form</h3>
+      <form action="/dashboard" method="POST">
         <div className="form-group mb-3">
             <label>Username</label>
             <input type="text" className="form-control" placeholder="Username" name="userName"/>
@@ -29,8 +19,5 @@ function Register() {
         </div>
       </form>
     </div>
-    </div>
-  );
+  )
 }
-
-export default Register;
