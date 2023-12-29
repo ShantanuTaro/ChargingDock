@@ -1,13 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
-
+import Register from './register';
 function App() {
   
   return (
-    <div className="App">
-      <header className="App-header">
-        Charging DOCK
-      </header>
+    <div >
+      
+        <Register/>
+      
     </div>
   );
 }
