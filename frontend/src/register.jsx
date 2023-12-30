@@ -1,7 +1,12 @@
+import { useNavigate } from "react-router-dom";
 
 
 function Register() {
-  
+  let navigate = useNavigate();
+  const onRegister = () =>{
+    let path = `/success`; 
+    navigate(path);
+  }
   return (
     <div className="App">
       <div className="container">
@@ -25,7 +30,7 @@ function Register() {
             <input type="password" className="form-control" placeholder="Password" name="password"/>
           </div>
         <div className="d-grid mt-3">
-        <button type="submit" className="btn btn-primary form-control">Submit</button>
+        <button onClick={onRegister} type="submit" className="btn btn-primary form-control">Submit</button>
         </div>
       </form>
     </div>

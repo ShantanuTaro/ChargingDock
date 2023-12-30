@@ -37,7 +37,7 @@ app.post('/register', function(req,res){
                  
         });
              
-        return res.redirect('signup_success.html');
+        return res.redirect('/success');
 })
 
 
