@@ -30,5 +30,27 @@ const register = async (req,res,next) =>{
     }
 }
 
+const login = async(req,res,next) =>{
 
-module.exports={index, register}
+      try {
+        // check if the user exists
+        const { email, password } = req.body;
+        let user = await UserModel.findOne({ email: req.body.email });
+        if (user) {
+          //check if password matches
+          const result = user.validPassword(req.body.password);
+          if (result) {
+            res.json("User validated");
+          } else {
+            res.status(400).json({ error: "password doesn't match" });
+          }
+        } else {
+          res.status(400).json({ error: "User doesn't exist" });
+        }
+      } catch (error) {
+        res.status(400).json({ error });
+    } 
+}
+
+
+module.exports={index, register, login}
