@@ -35,10 +35,10 @@ const login = async(req,res,next) =>{
       try {
         // check if the user exists
         const { email, password } = req.body;
-        const user = await UserModel.findOne({ email: req.body.email });
+        let user = await UserModel.findOne({ email: req.body.email });
         if (user) {
           //check if password matches
-          const result = req.body.password === user.password;
+          const result = user.validPassword(req.body.password);
           if (result) {
             res.json("User validated");
           } else {
