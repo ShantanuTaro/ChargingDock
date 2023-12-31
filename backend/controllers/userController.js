@@ -14,7 +14,7 @@ const index = (req,res,next) =>{
       }
 }
 
-const show = (req,res,next) =>{
+const register = (req,res,next) =>{
     try {
         const { firstName, lastName, email, password } = req.body;
         const newUser = new UserModel({ firstName, lastName, email, password  });
@@ -27,6 +27,27 @@ const show = (req,res,next) =>{
       }
 }
 
+const login = async(req,res,next) =>{
+
+      try {
+        // check if the user exists
+        const { email, password } = req.body;
+        const user = await UserModel.findOne({ email: req.body.email });
+        if (user) {
+          //check if password matches
+          const result = req.body.password === user.password;
+          if (result) {
+            res.json("User validated");
+          } else {
+            res.status(400).json({ error: "password doesn't match" });
+          }
+        } else {
+          res.status(400).json({ error: "User doesn't exist" });
+        }
+      } catch (error) {
+        res.status(400).json({ error });
+    } 
+}
 
 
-module.exports={index, show}
+module.exports={index, register, login}
