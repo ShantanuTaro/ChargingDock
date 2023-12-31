@@ -1,17 +1,10 @@
-let express=require("express");
-let bodyParser=require("body-parser");
-
-const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/ChargingDock');
-let db=mongoose.connection;
-db.on('error', console.log.bind(console, "connection error"));
-db.once('open', function(callback){
-	console.log("connection succeeded");
-})
+const express=require("express");
+const bodyParser=require("body-parser");
+const connectDB = require("./config/db")
 
 let app=express()
-
-
+connectDB()
+const port = 3000
 app.use(bodyParser.json());
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({
@@ -36,17 +29,23 @@ app.post('/register', function(req,res){
             console.log("Record inserted Successfully");
                  
         });
+
              
-        return res.redirect('/success');
-})
+          res.send(results).status(200);
+        })
 
+     
+        
 
-app.get('/',function(req,res){
-res.set({
-	'Access-control-Allow-Origin': '*'
-	});
-return res.redirect('index.html');
-}).listen(3000)
+        app.get('/', (req, res) => {
+          let results = db.collection('registration').find({firstName : "Shantanu"});
+          res.send(results);
+        });
+        
+        // Start the server
+        app.listen(port, () => {
+          console.log(`Server is running on http://localhost:${port}`);
+        });
 
 
 console.log("server listening at port 3000");
