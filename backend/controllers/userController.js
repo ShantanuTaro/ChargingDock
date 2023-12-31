@@ -15,18 +15,42 @@ const index = (req,res,next) =>{
 }
 
 const register = async (req,res,next) =>{
-    try {
-        const { firstName, lastName, email, password } = req.body;
-        const newUser = new UserModel({ firstName, lastName, email, password  });
-        const savedUser = await newUser.save();
-        res.json(savedUser);
-        //res.send(savedUser)
+  try {
+      const { firstName, lastName, email, password } = req.body;
+      let newUser = new UserModel({ firstName, lastName, email, password  });
+      
+      newUser.password = newUser.generateHash(password)
+      
+      const savedUser = await newUser.save();
+      res.json(savedUser);
+      //res.send(savedUser)
+    } catch (error) {
+      console.error('Error creating user:', error);
+      res.status(500).send('Internal Server Error');
+    }
+}
+
+const login = async(req,res,next) =>{
+
+      try {
+        // check if the user exists
+        const { email, password } = req.body;
+        let user = await UserModel.findOne({ email: req.body.email });
+        if (user) {
+          //check if password matches
+          const result = user.validPassword(req.body.password);
+          if (result) {
+            res.json("User validated");
+          } else {
+            res.status(400).json({ error: "password doesn't match" });
+          }
+        } else {
+          res.status(400).json({ error: "User doesn't exist" });
+        }
       } catch (error) {
-        console.error('Error creating user:', error);
-        res.status(500).send('Internal Server Error');
-      }
+        res.status(400).json({ error });
+    } 
 }
 
 
-
-module.exports={index, register}
+module.exports={index, register, login}
