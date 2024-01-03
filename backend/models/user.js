@@ -3,7 +3,7 @@ const Schema = mongoose.Schema
 const bcrypt = require('bcrypt-nodejs');
 
 
-const userSchema = new Schema({
+const customerSchema = new Schema({
     firstName: String,
     lastName : String,
     email : String,
@@ -11,14 +11,14 @@ const userSchema = new Schema({
  });
 
  //hash password
- userSchema.methods.generateHash = function(password){
+ customerSchema.methods.generateHash = function(password){
     return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
  }
 
  //check pass is valid
- userSchema.methods.validPassword = function(password) {
+ customerSchema.methods.validPassword = function(password) {
     return bcrypt.compareSync(password, this.password);
   };
  
- const UserModel = mongoose.model('User', userSchema);
- module.exports = UserModel
+ const CustomerModel = mongoose.model('CustomerDetails', customerSchema);
+ module.exports = CustomerModel
