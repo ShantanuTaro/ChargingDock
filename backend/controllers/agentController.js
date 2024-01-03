@@ -1,9 +1,9 @@
 
 const User = require("../models/user")
 
-const listCustomers = (req,res,next) =>{
+const listAgents = (req,res,next) =>{
     try {
-        const users = User.CustomerModel.find({}).then(response =>{
+        const users = User.AgentModel.find({}).then(response =>{
             res.json({
                 response
             })
@@ -14,14 +14,14 @@ const listCustomers = (req,res,next) =>{
       }
 }
 
-const customerRegistration = async (req,res,next) =>{
+const agentRegistration = async (req,res,next) =>{
   try {
-      const { firstName, lastName, email, password } = req.body;
-      let newCustomer = new User.CustomerModel({ firstName, lastName, email, password  });
+      const { firstName, lastName, email, password, chargerLocation, noOfChargers } = req.body;
+      let newAgent = new User.AgentModel({ firstName, lastName, email, password, chargerLocation, noOfChargers  });
       
-      newCustomer.password = newCustomer.generateHash(password)
+      newAgent.password = newAgent.generateHash(password)
       
-      const savedUser = await newCustomer.save();
+      const savedUser = await newAgent.save();
       res.json(savedUser);
       //res.send(savedUser)
     } catch (error) {
@@ -30,17 +30,17 @@ const customerRegistration = async (req,res,next) =>{
     }
 }
 
-const customerLogin = async(req,res,next) =>{
+const agentLogin = async(req,res,next) =>{
 
       try {
-        // check if the customer exists
+        // check if the agent exists
         const { email, password } = req.body;
-        let customer = await User.CustomerModel.findOne({ email: req.body.email });
-        if (customer) {
+        let agent = await User.AgentModel.findOne({ email: req.body.email });
+        if (agent) {
           //check if password matches
-          const result = customer.validPassword(req.body.password);
+          const result = agent.validPassword(req.body.password);
           if (result) {
-            res.json("customer validated");
+            res.json("Agent validated");
           } else {
             res.status(400).json({ error: "password doesn't match" });
           }
@@ -53,4 +53,4 @@ const customerLogin = async(req,res,next) =>{
 }
 
 
-module.exports={listCustomers, customerRegistration, customerLogin}
+module.exports={listAgents, agentRegistration, agentLogin}
