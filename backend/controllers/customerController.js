@@ -1,9 +1,9 @@
 
-const UserModel = require("../models/user")
+const User = require("../models/user")
 
-const index = (req,res,next) =>{
+const listCustomers = (req,res,next) =>{
     try {
-        const users = UserModel.find({}).then(response =>{
+        const users = User.CustomerModel.find({}).then(response =>{
             res.json({
                 response
             })
@@ -14,33 +14,33 @@ const index = (req,res,next) =>{
       }
 }
 
-const register = async (req,res,next) =>{
+const customerRegistration = async (req,res,next) =>{
   try {
       const { firstName, lastName, email, password } = req.body;
-      let newUser = new UserModel({ firstName, lastName, email, password  });
+      let newCustomer = new User.CustomerModel({ firstName, lastName, email, password  });
       
-      newUser.password = newUser.generateHash(password)
+      newCustomer.password = newCustomer.generateHash(password)
       
-      const savedUser = await newUser.save();
+      const savedUser = await newCustomer.save();
       res.json(savedUser);
       //res.send(savedUser)
     } catch (error) {
-      console.error('Error creating user:', error);
+      console.error('Error creating User:', error);
       res.status(500).send('Internal Server Error');
     }
 }
 
-const login = async(req,res,next) =>{
+const customerLogin = async(req,res,next) =>{
 
       try {
-        // check if the user exists
+        // check if the customer exists
         const { email, password } = req.body;
-        let user = await UserModel.findOne({ email: req.body.email });
-        if (user) {
+        let customer = await User.CustomerModel.findOne({ email: req.body.email });
+        if (customer) {
           //check if password matches
-          const result = user.validPassword(req.body.password);
+          const result = customer.validPassword(req.body.password);
           if (result) {
-            res.json("User validated");
+            res.json("customer validated");
           } else {
             res.status(400).json({ error: "password doesn't match" });
           }
@@ -53,4 +53,4 @@ const login = async(req,res,next) =>{
 }
 
 
-module.exports={index, register, login}
+module.exports={listCustomers, customerRegistration, customerLogin}
