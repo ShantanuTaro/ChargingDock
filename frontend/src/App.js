@@ -1,21 +1,21 @@
 import './App.css';
-import Register from './register';
-import { Login } from './login';
+import {Register} from './Pages/register';
+import { Login } from './Pages/login';
 import { BrowserRouter as Router, Route,Routes, Switch} from "react-router-dom";
-import Home from './home';
-import SuccessMessage from './successMessage';
+import {Home} from './Header/home';
+import SuccessMessage from './Pages/successMessage';
 
 function App() {
   
   return (
     <div >
-      
 
       <Router>
+      <Home/>
         <Routes>
-        <Route exact path="/" element={<Home/>} />
-        <Route exact path="/dashboard" element={<Login/>} />
-        <Route exact path="/register" element={<Register/>} />
+        
+        <Route exact path="/login" element={<Login/>} />
+        <Route exact path="/" element={<Register/>} />
         <Route exact path="/success" element={<SuccessMessage/>} />
         </Routes>
      

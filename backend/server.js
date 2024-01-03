@@ -1,7 +1,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const connectDB = require("./config/db");
-const { default: mongoose } = require("mongoose");
+const mongoose= require("mongoose");
+const cors =require('cors')
 const userRoute = require('./routes/userRoute')
 let app = express()
 
@@ -16,7 +17,7 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({
   extended: true
 }));
-
+app.use(cors());
 
 // Start the server
 app.listen(port, () => {
@@ -27,3 +28,8 @@ app.listen(port, () => {
 console.log("server listening at port 3000");
 
 app.use('/',userRoute)
+
+app.use(cors({
+  origin: 'http://localhost:3001',
+  optionsSuccessStatus: 200, // Some legacy browsers (IE11, various SmartTVs) choke on 204
+}));
