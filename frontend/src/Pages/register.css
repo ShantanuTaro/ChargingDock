@@ -1,0 +1,396 @@
+:root {
+    --d9d9d9-2-paints: rgba(217, 217, 217, 1);
+  }
+.register-page {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .register-page .div {
+    background-color: #ffffff;
+    height: 1024px;
+    position: relative;
+    width: 1440px;
+  }
+  
+  .register-page .overlap-group {
+    height: 179px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 1440px;
+  }
+  
+  .register-page .page-heading {
+    background-color: #ffffff;
+    height: 92px;
+    left: 0;
+    position: absolute;
+    top: 87px;
+    width: 1440px;
+  }
+  
+  .register-page .date-august {
+    color: #000000;
+    font-family: "Inter-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 400;
+    height: 26px;
+    left: 1095px;
+    letter-spacing: 0;
+    line-height: 26px;
+    position: absolute;
+    top: 49px;
+    white-space: nowrap;
+  }
+  
+  .register-page .text-wrapper {
+    font-weight: 500;
+  }
+  
+  .register-page .span {
+    font-family: "Inter-Light", Helvetica;
+    font-weight: 300;
+  }
+  
+  .register-page .text-wrapper-2 {
+    color: #000000;
+    font-family: "Newsreader-Regular", Helvetica;
+    font-size: 33px;
+    font-weight: 400;
+    height: 40px;
+    left: 96px;
+    letter-spacing: -0.66px;
+    line-height: 39.6px;
+    position: absolute;
+    top: 35px;
+    white-space: nowrap;
+  }
+  
+  .register-page .divider {
+    height: 2px;
+    left: 92px;
+    object-fit: cover;
+    position: absolute;
+    top: 90px;
+    width: 1256px;
+  }
+  
+  .register-page .navbar {
+    height: 95px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 1440px;
+  }
+  
+  .register-page .text-wrapper-3 {
+    color: #048320;
+    font-family: "Newsreader-Medium", Helvetica;
+    font-size: 32px;
+    font-weight: 500;
+    left: 96px;
+    letter-spacing: -0.32px;
+    line-height: 32px;
+    position: absolute;
+    top: 40px;
+    white-space: nowrap;
+  }
+  
+  .register-page .text-wrapper-4 {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 16px;
+    font-weight: 400;
+    height: 21px;
+    left: 741px;
+    letter-spacing: 0;
+    line-height: 20.8px;
+    position: absolute;
+    text-align: center;
+    top: 44px;
+    white-space: nowrap;
+  }
+  
+  .register-page .text-wrapper-5 {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 16px;
+    font-weight: 400;
+    height: 21px;
+    left: 822px;
+    letter-spacing: 0;
+    line-height: 20.8px;
+    position: absolute;
+    text-align: center;
+    top: 44px;
+    white-space: nowrap;
+  }
+  
+  .register-page .text-wrapper-6 {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 16px;
+    font-weight: 400;
+    height: 21px;
+    left: 956px;
+    letter-spacing: 0;
+    line-height: 20.8px;
+    position: absolute;
+    text-align: center;
+    top: 44px;
+    white-space: nowrap;
+  }
+  
+  .register-page .text-wrapper-7 {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 16px;
+    font-weight: 400;
+    height: 21px;
+    left: 1094px;
+    letter-spacing: 0;
+    line-height: 20.8px;
+    position: absolute;
+    text-align: center;
+    top: 44px;
+    white-space: nowrap;
+  }
+  
+  .register-page .cart-button {
+    all: unset;
+    background-color: #f04932;
+    border-radius: 8px;
+    box-sizing: border-box;
+    height: 48px;
+    left: 1218px;
+    overflow: hidden;
+    position: absolute;
+    top: 32px;
+    width: 126px;
+  }
+  
+  .register-page .text-wrapper-8 {
+    color: #ffffff;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-size: 16px;
+    font-weight: 600;
+    height: 21px;
+    left: 42px;
+    letter-spacing: 0;
+    line-height: 20.8px;
+    position: absolute;
+    text-align: center;
+    top: 12px;
+    white-space: nowrap;
+  }
+  
+  .register-page .ellipse {
+    height: 100px;
+    left: -6136px;
+    position: absolute;
+    top: -3044px;
+    width: 100px;
+  }
+  
+  .register-page .text-wrapper-9 {
+    color: #000000;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-size: 20px;
+    font-weight: 600;
+    left: 364px;
+    letter-spacing: 0;
+    line-height: 26px;
+    position: absolute;
+    top: 205px;
+    width: 139px;
+  }
+  
+  .register-page .text-wrapper-10 {
+    color: #000000;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-size: 20px;
+    font-weight: 600;
+    left: 708px;
+    letter-spacing: 0;
+    line-height: 26px;
+    position: absolute;
+    top: 209px;
+    white-space: nowrap;
+    width: 225px;
+  }
+  
+  .register-page .rectangle {
+    background-color: #ffffff;
+    border: 1px solid;
+    border-color: #00000036;
+    border-radius: 5px;
+    height: 62px;
+    left: 361px;
+    position: absolute;
+    top: 247px;
+    width: 307px;
+  }
+  
+  .register-page .rectangle-2 {
+    background-color: #ffffff;
+    border: 1px solid;
+    border-color: #0000002e;
+    border-radius: 5px;
+    height: 60px;
+    left: 697px;
+    position: absolute;
+    top: 247px;
+    width: 304px;
+  }
+  
+  .register-page .text-wrapper-11 {
+    color: #000000;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-size: 20px;
+    font-weight: 600;
+    left: 364px;
+    letter-spacing: 0;
+    line-height: 26px;
+    position: absolute;
+    top: 323px;
+    white-space: nowrap;
+    width: 93px;
+  }
+  
+  .register-page .rectangle-3 {
+    background-color: #ffffff;
+    border: 1px solid;
+    border-color: #0000003b;
+    border-radius: 5px;
+    height: 61px;
+    left: 361px;
+    position: absolute;
+    top: 365px;
+    width: 640px;
+  }
+  
+  .register-page .text-wrapper-12 {
+    color: #000000;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-size: 20px;
+    font-weight: 600;
+    left: 365px;
+    letter-spacing: 0;
+    line-height: 26px;
+    position: absolute;
+    top: 444px;
+    white-space: nowrap;
+    width: 138px;
+  }
+  
+  .register-page .text-wrapper-13 {
+    color: #000000;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-size: 20px;
+    font-weight: 600;
+    left: 697px;
+    letter-spacing: 0;
+    line-height: 26px;
+    position: absolute;
+    top: 448px;
+    white-space: nowrap;
+    width: 225px;
+  }
+  
+  .register-page .rectangle-4 {
+    background-color: #ffffff;
+    border: 1px solid;
+    border-color: #0000002b;
+    border-radius: 5px;
+    height: 61px;
+    left: 361px;
+    position: absolute;
+    top: 486px;
+    width: 307px;
+  }
+  
+  .register-page .rectangle-5 {
+    background-color: #ffffff;
+    border: 1px solid;
+    border-color: #0000002e;
+    border-radius: 5px;
+    height: 61px;
+    left: 702px;
+    position: absolute;
+    top: 486px;
+    width: 299px;
+  }
+  
+  .register-page .overlap {
+    height: 44px;
+    left: 361px;
+    position: absolute;
+    top: 668px;
+    width: 608px;
+  }
+  
+  .register-page .text-wrapper-14 {
+    color: #fefafa;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-size: 20px;
+    font-weight: 600;
+    left: 382px;
+    letter-spacing: 0;
+    line-height: 26px;
+    position: absolute;
+    top: 14px;
+    white-space: nowrap;
+    width: 226px;
+  }
+  
+  .register-page .already-have-an {
+    color: transparent;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-size: 18px;
+    font-weight: 600;
+    height: 28px;
+    left: 0;
+    letter-spacing: 0;
+    line-height: 23.4px;
+    position: absolute;
+    top: 0;
+    white-space: nowrap;
+    width: 471px;
+  }
+  
+  .register-page .text-wrapper-15 {
+    color: #000000;
+  }
+  
+  .register-page .text-wrapper-16 {
+    color: #099eb2;
+  }
+  
+  .register-page .div-wrapper {
+    background-color: #328bbe;
+    border-radius: 10px;
+    height: 62px;
+    left: 612px;
+    position: absolute;
+    top: 578px;
+    width: 152px;
+  }
+  
+  .register-page .text-wrapper-17 {
+    color: #fefafa;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-size: 23px;
+    font-weight: 600;
+    left: 30px;
+    letter-spacing: 0;
+    line-height: 29.9px;
+    position: absolute;
+    top: 14px;
+    white-space: nowrap;
+    width: 110px;
+  }
+  

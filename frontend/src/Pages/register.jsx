@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useHistory } from 'react-router-dom';
+import "./register.css";
 
-function Register() {
+export const Register = () => {
   const url = 'http://localhost:3000/register';
 
   const [userData, setUserData] = useState({
@@ -22,10 +22,6 @@ function Register() {
   };
 
   let navigate = useNavigate();
-  // const onRegister = () => {
-  //   let path = `/success`; 
-  //   navigate(path);
-  // }
 
   localStorage.setItem('userData', JSON.stringify(userData));
   const handleSubmit = async (e) => {
@@ -35,10 +31,6 @@ function Register() {
       const response = await axios.post(url, userData);
 
       if (response.status === 200) {
-        // const newUser = response.data;
-        // const users = JSON.parse(localStorage.getItem('users')) || [];
-        // users.push(newUser);
-        // localStorage.setItem('users', JSON.stringify(users));
         let path = `/success`;
         navigate(path);
         console.log('User created successfully');
@@ -53,12 +45,12 @@ function Register() {
 
 
   return (
-    <div className="App">
+    <div className="">
       <div className="container">
-        <h2>Login and register form with Node.js, Express.js and MySQL</h2>
         <h3>Register form</h3>
         <form action="/register" method="POST" onSubmit={handleSubmit}>
-          <div className="form-group mb-3">
+          <div className="form-group mb-3">   
+
             <label>First name</label>
             <input type="text" className="form-control" placeholder="First name" name="firstName" value={userData.firstName}
               onChange={handleInputChange} />
@@ -87,4 +79,61 @@ function Register() {
   );
 }
 
-export default Register;
+
+
+
+
+
+// import React from "react";
+// import "./register.css";
+
+
+// export const Register = () => {
+//   return (
+//     <div className="register-page">
+//       <div className="div">
+//         <div className="overlap-group">
+//           <div className="page-heading">
+//             <p className="date-august">
+//               <span className="text-wrapper">Date</span>
+//               <span className="span">&nbsp;&nbsp;—&nbsp;&nbsp;August 21, 2023</span>
+//             </p>
+//             <div className="text-wrapper-2">Register</div>
+//             <img className="divider" alt="Divider" src="divider.svg" />
+//           </div>
+//           <div className="navbar">
+//             <div className="text-wrapper-3">Charging Dock</div>
+//             <div className="text-wrapper-4">Home</div>
+//             <div className="text-wrapper-5">Testimonials</div>
+//             <div className="text-wrapper-6">Who we are</div>
+//             <div className="text-wrapper-7">My profile</div>
+//             <button className="cart-button">
+//               <div className="text-wrapper-8">Login</div>
+//               <img className="ellipse" alt="Ellipse" src="ellipse-280.svg" />
+//             </button>
+//           </div>
+//         </div>
+//         <div className="text-wrapper-9">First Name</div>
+//         <div className="text-wrapper-10">Last Name</div>
+//         <div className="rectangle" />
+//         <div className="rectangle-2" />
+//         <div className="text-wrapper-11">Email</div>
+//         <div className="rectangle-3" />
+//         <div className="text-wrapper-12">Password</div>
+//         <div className="text-wrapper-13">Confirmation</div>
+//         <div className="rectangle-4" />
+//         <div className="rectangle-5" />
+//         <div className="overlap">
+//           <div className="text-wrapper-14">Register</div>
+//           <p className="already-have-an">
+//             <span className="text-wrapper-15">Already have an account?</span>
+//             <span className="text-wrapper-16"> Sign In</span>
+//           </p>
+//         </div>
+//         <div className="div-wrapper">
+//           <div className="text-wrapper-17">Register</div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
