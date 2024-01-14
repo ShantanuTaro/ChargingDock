@@ -22,6 +22,8 @@ const chargerController = require("../controllers/chargerController")
 
 router.get('/listChargers',chargerController.listChargers)
 router.post('/chargerRegistration',chargerController.chargerRegistration)
+router.get('/listLocationCode',chargerController.listLocationCode)
+
 
 
 module.exports = router

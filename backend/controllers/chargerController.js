@@ -28,5 +28,18 @@ const chargerRegistration = async (req,res,next) =>{
     }
 }
 
+const listLocationCode =  async (req, res) => {
+    try {
+  
+      const values = await User.AgentModel.find();
+      const names = values.map(doc => doc.chargerLocationCode);
+  
+      res.json(names);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  };
 
-module.exports= {listChargers, chargerRegistration}
+
+module.exports= {listChargers, chargerRegistration, listLocationCode}
