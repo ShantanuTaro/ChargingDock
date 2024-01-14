@@ -1,0 +1,35 @@
+
+
+  .box {
+    height: 296px;
+    width: 260px;
+    position: relative;
+  }
+  
+  .box .rectangle {
+    background-image: url('https://media.gettyimages.com/id/155148505/photo/electric-car.jpg?s=612x612&w=gi&k=20&c=DqmTuHjGDAd0xyllJdC3TZdoIJyc3k4VKu2XYORnng0='); /* Replace with the path to your image */
+    
+    background-size: cover;
+    background-position: center;
+    border-radius: 24px;
+    height: 196px;
+    width: 260px;
+    margin-top: 100px;
+    margin-left: 50px;
+    border: 1px solid transparent; /* Set initial border color to transparent */
+    position: relative;
+    z-index: 1;
+  }
+  
+  .box .border-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 10px solid transparent; /* Adjust the border width as needed */
+    background: linear-gradient(180deg, rgb(129.35, 222.06, 172) 0.1%, rgba(126.78, 226.72, 172.75, 0) 40.73%);
+    border-image-slice: 1;
+    border-radius: 23px; /* Adjust to match the main image border-radius - 1px */
+    z-index: 2;
+  }
