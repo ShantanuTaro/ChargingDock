@@ -1,17 +1,33 @@
 import React, { useState } from "react";
-import {  useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import Alert from '@mui/material/Alert';
-import { Stack } from "@mui/material";
+import MuiAlert from '@mui/material/Alert';
+
+import { Box, Button, Grid, Snackbar, Stack } from "@mui/material";
+
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 export const Login = () => {
   let isValid = true
-  const url = 'http://localhost:3000/login';
+  const url = 'http://localhost:3000/customerLogin';
 
   const [userData, setUserData] = useState({
     email: '',
     password: ''
   });
+
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState('');
+  const [isRegistrationSuccessful, setIsRegistrationSuccessful] = useState(false);
+
+  const handleSnackbarClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setSnackbarOpen(false);
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -27,44 +43,67 @@ export const Login = () => {
     e.preventDefault();
 
     try {
-      
+
       const response = await axios.post(url, userData);
       console.log(response);
-        const token = response.data.token;
-        localStorage.setItem('token', token);
-
-        console.log('Login successful');
+      const token = response.data.token;
+      localStorage.setItem('token', token);
+      setIsRegistrationSuccessful(true);
+      setSnackbarMessage('Login successful!');
+      setSnackbarOpen(true);
+      console.log('Login successful');
+      let path = `/success`;
+      navigate(path);
     } catch (error) {
       console.error('Error creating user:', error.response.data);
       const errorMessage =
-      error.response && error.response.data && error.response.data.message
-        ? error.response.data.message
-        : 'An error occurred. Please try again.';
+        error.response && error.response.data && error.response.data.message
+          ? error.response.data.message
+          : 'An error occurred. Please try again.';
 
-    // Display an alert with the error message
-    alert(errorMessage);
+      setIsRegistrationSuccessful(false);
+      setSnackbarMessage('Login failed. Please try again.');
+      setSnackbarOpen(true);
+
+      // Display an alert with the error message
+      //alert(errorMessage);
     }
   };
 
 
   return (
     <div className="container">
-     
-    <h3>Login Form</h3>
+
+      <h3>Login Form</h3>
       <form action="/login" method="POST" onSubmit={handleSubmit}>
-      {!isValid && <Alert onClose={() => {}}>This is a success alert — check it out!</Alert>}
+        {!isValid && <Alert onClose={() => { }}>This is a success alert — check it out!</Alert>}
         <div className="form-group mb-3">
-            <label>Username</label>
-            <input type="text" className="form-control" placeholder="Username" name="email" value={userData.email}
-              onChange={handleInputChange}/>
+          <label>Username</label>
+          <input type="text" className="form-control" placeholder="Username" name="email" value={userData.email}
+            onChange={handleInputChange} />
         </div>
         <div className="form-group mb-3">
-            <label>Password</label>
-            <input type="password" className="form-control" placeholder="Password" name="password" value={userData.password}
-              onChange={handleInputChange}/>
-          </div>
+          <label>Password</label>
+          <input type="password" className="form-control" placeholder="Password" name="password" value={userData.password}
+            onChange={handleInputChange} />
+        </div>
         <div className="d-grid mt-3">
-        <button type="submit" className="btn btn-primary form-control">Submit</button>
+          <button type="submit" className="btn btn-primary form-control">Submit</button>
+          <Snackbar
+            open={snackbarOpen}
+            autoHideDuration={6000}
+            onClose={handleSnackbarClose}
+          >
+            <MuiAlert
+              elevation={6}
+              variant="filled"
+              onClose={handleSnackbarClose}
+              severity={isRegistrationSuccessful ? 'success' : 'error'}
+            >
+              {snackbarMessage}
+            </MuiAlert>
+          </Snackbar>
+
         </div>
       </form>
     </div>

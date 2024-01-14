@@ -4,7 +4,7 @@ import axios from "axios";
 import "./register.css";
 
 export const Register = () => {
-  const url = 'http://localhost:3000/register';
+  const url = 'http://localhost:3000/customerRegistration';
 
   const [userData, setUserData] = useState({
     firstName: '',
@@ -48,7 +48,7 @@ export const Register = () => {
     <div className="">
       <div className="container">
         <h3>Register form</h3>
-        <form action="/register" method="POST" onSubmit={handleSubmit}>
+        <form action="/customerRegistration" method="POST" onSubmit={handleSubmit}>
           <div className="form-group mb-3">   
 
             <label>First name</label>

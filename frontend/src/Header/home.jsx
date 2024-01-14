@@ -5,7 +5,7 @@ import "./home.css";
 export const Home = () => {
   let navigate = useNavigate();
   const routeLoginChange = () => {
-    let path = `/login`;
+    let path = `/customerLogin`;
     navigate(path);
   }
 
