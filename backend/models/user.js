@@ -29,8 +29,10 @@ const customerSchema = new Schema({
    lastName : String,
    email : String,
    password : String,
-   chargerLocation : String, //for now Plus code from GOOGLE Maps ---> HMGQ+M3 Pune, Maharashtra
-   noOfChargers : Number
+   chargerLocation : String,
+   chargerLocationPlusCode: String, //for now Plus code from GOOGLE Maps ---> HMGQ+M3 Pune, Maharashtra
+   noOfChargers : Number,
+   uniqueId : String
 });
  //hash password
  agentSchema.methods.generateHash = function(password){
@@ -45,4 +47,17 @@ agentSchema.methods.validPassword = function(password) {
 const AgentModel = mongoose.model('AgentDetails', agentSchema);
 
 
- module.exports = {CustomerModel, AgentModel}
+ //Charger Logic
+ const chargerSchema = new Schema({
+   uniqueId : String,
+   dockNumber: Number,
+   chargerStatus : String,
+   pricePerWatt : Number,
+   currentType: String,
+   chargerType : String,
+   chargerTiming: String 
+});
+
+const ChargerModel = mongoose.model('ChargerDetails', chargerSchema);
+
+ module.exports = {CustomerModel, AgentModel, ChargerModel}

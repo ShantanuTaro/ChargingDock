@@ -17,4 +17,11 @@ router.post('/agentRegistration',agentController.agentRegistration)
 router.post('/agentLogin',agentController.agentLogin)
 
 
+//Charger Logic
+const chargerController = require("../controllers/chargerController")
+
+router.get('/listChargers',chargerController.listChargers)
+router.post('/chargerRegistration',chargerController.chargerRegistration)
+
+
 module.exports = router

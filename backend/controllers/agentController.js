@@ -1,6 +1,15 @@
 
 const User = require("../models/user")
 
+//// unique id
+let counter = 0;
+
+const uniqueId = () => {
+  counter += 1;
+  return 'id_' + Date.now() + '_' + counter;
+};
+////
+
 const listAgents = (req,res,next) =>{
     try {
         const users = User.AgentModel.find({}).then(response =>{
@@ -16,9 +25,11 @@ const listAgents = (req,res,next) =>{
 
 const agentRegistration = async (req,res,next) =>{
   try {
-      const { firstName, lastName, email, password, chargerLocation, noOfChargers } = req.body;
-      let newAgent = new User.AgentModel({ firstName, lastName, email, password, chargerLocation, noOfChargers  });
+      const { firstName, lastName, email, password, chargerLocation, chargerLocationPlusCode, noOfChargers } = req.body;
+      let newAgent = new User.AgentModel({ firstName, lastName, email, password, chargerLocation, chargerLocationPlusCode, noOfChargers, uniqueId  });
       
+      newAgent.uniqueId = uniqueId();
+
       newAgent.password = newAgent.generateHash(password)
       
       const savedUser = await newAgent.save();
