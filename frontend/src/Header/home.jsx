@@ -1,20 +1,21 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./home.css";
 
 
 export const Home = () => {
   let navigate = useNavigate();
+
   const routeLoginChange = () => {
     let path = `/customerLogin`;
     navigate(path);
   }
 
-  const routeRegisterChange = () => {
-    let path = `/register`;
+  const routeRegisterChange = (path) => {  
+
     navigate(path);
   }
   return (
-    // <div className="App">
+     <div className="App">
     <div className="navigation">
       <div className="div">
         <div className="text-wrapper">Charging Dock</div>
@@ -32,10 +33,18 @@ export const Home = () => {
         </div>
       {/* <button onClick={routeLoginChange}>Login</button>
        <button onClick={routeRegisterChange}>Register</button> */}
+        
+
     </div>
+    <button ><Link to='/customerRegistration'>Customer Registeration</Link></button> 
+    <button ><Link to='/customerLogin'>Customer Login</Link></button> 
+    <button ><Link to='/agentLogin'>Agent Login</Link></button> 
+    <button ><Link to='/agentRegistration'>Agent Registration</Link></button> 
+    <button ><Link to='/chargerRegistration'>Charger Registration</Link></button> 
+    <button ><Link to='/mapView'>Map View</Link></button> 
 
 
-    // </div>
+     </div>
   );
 }
 
