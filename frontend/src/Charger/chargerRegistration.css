@@ -1,0 +1,64 @@
+/* ChargerRegistration.css */
+/* ChargerRegistration.css */
+
+  
+  /* Add Animate.css classes for additional animations */
+  .animate__animated {
+    animation-duration: 1s;
+  }
+  
+  .animate__bounceInDown {
+    animation-name: bounceInDown;
+  }
+  
+  .animate__fadeIn {
+    animation-name: fadeIn;
+  }
+.charger-registration {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .timepicker{
+    margin-right: 20px;
+  }
+  .time-picker-container{
+    justify-content: center;
+    /* margin: 20px; */
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .label {
+    display: block;
+    margin-bottom: 5px;
+    color: black;
+  }
+  
+  .input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    height: 40px;
+  }
+  
+  .button {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .button:hover {
+    background-color: #45a049;
+  }
+  
