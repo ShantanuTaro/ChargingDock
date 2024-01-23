@@ -3,6 +3,7 @@ import React from 'react';
 import GoogleMapView from './MapView';
 import MapView from './MapView';
 import LeafletMapView from './MapView';
+import LocationMapView from './DisplayCodesMap';
 
 const MapMain = () => {
     const sampleData = {
@@ -13,7 +14,8 @@ const MapMain = () => {
   return (
     <div>
       <h1>Map View Example</h1>
-      <LeafletMapView />
+      <LocationMapView />
+
     </div>
   );
 };
