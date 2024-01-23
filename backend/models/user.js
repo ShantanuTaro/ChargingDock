@@ -55,7 +55,9 @@ const AgentModel = mongoose.model('AgentDetails', agentSchema);
    pricePerWatt : Number,
    currentType: String,
    chargerType : String,
-   chargerTiming: String 
+   chargerTimingFrom: String,
+   chargerTimingTo: String,
+   available24hrs: Boolean
 });
 
 const ChargerModel = mongoose.model('ChargerDetails', chargerSchema);

@@ -3,41 +3,75 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { Button, CardActionArea, CardActions, Chip, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Modal, Paper, Popover, Slide, Stack, useMediaQuery, useTheme } from '@mui/material';
+import { Backdrop, Box, Button, CardActionArea, CardActions, Chip, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Modal, Paper, Popover, Slide, Stack, TextField, useMediaQuery, useTheme } from '@mui/material';
 import DetailModal from './details';
 import './success.css'
 import styled from '@emotion/styled';
-
-
+import { TimePicker } from '@mui/x-date-pickers/TimePicker';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { convertTo12HourFormat } from '../Common/time24hr';
+import dayjs from 'dayjs';
 
 export default function MultiActionAreaCard({ key }) {
-  const [open, setOpen] = React.useState(false);
   const theme = useTheme();
+  const currentTime = dayjs().add(30, 'minutes');
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [appointmentTime, setAppointmentTime] = React.useState(dayjs().add(30, 'minutes'));
 
-  const handleClickOpen = () => {
-    setOpen(true);
+  const handlePopoverOpen = (event) => {
+    setAnchorEl(event.currentTarget);
   };
 
-  const handleClose = () => {
-    setOpen(false);
+  const handlePopoverClose = () => {
+    setAnchorEl(null);
   };
 
+  const handleBookAppointment = () => {
+    // Perform actions to book the appointment, for example, make an API call.
+    console.log('Appointment booked for time:', appointmentTime);
+    handlePopoverClose();
+  };
 
+  const handleTimeChangeFrom = (time) => {
+    // Extract hours and minutes from the dayjs object
+    const hours = time.hour();
+    const minutes = time.minute();
+    
+    // Convert the selected time to 12-hour format
+    const hours12hr = (hours % 12) || 12;
+    const period = hours < 12 ? 'AM' : 'PM';
+    const time12hr = `${hours12hr}:${String(minutes).padStart(2, '0')} ${period}`;
+    
+    setAppointmentTime(time12hr);
+  };
+  
+  const open = Boolean(anchorEl);
+
+  // React.useEffect(() => {
+  //   // Set default value to current time + 30 minutes using dayjs
+  //   const currentTime = dayjs().add(30, 'minutes');
+  //   setAppointmentTime(currentTime.toDate()); // Convert to JavaScript Date object
+  // }, []);
+  
   return (
     <div>
       
-      <Card  id={`${key}`} onClick={handleClickOpen} sx={{
+      <Card  id={`${key}`} onClick={handlePopoverOpen} sx={{
           maxWidth: isSmallScreen ? '100%' : 290,
           flexBasis: isSmallScreen ? '5%' : 'calc(25% - 15px)',
           borderRadius: '7px',
           height: '260px',
           width: '290px',
           marginBottom: '15px',
-        }} style={{ margin: '10px'}}>
+        }} 
+        style={{ margin: '10px'}}
+        
+        >
         <CardActionArea>
         <Stack direction="row" spacing={1} style={{ position: 'absolute', top: 7, left: 10, zIndex: 2 }}>
-            <Chip label="Available" color="success" sx={{ fontSize: '12px', padding: '-3px' }} />
+            <Chip label="Available" color="success" sx={{ fontSize: '12px', padding: '-3px' }} onClick={handlePopoverOpen}/>
           </Stack>
           <CardMedia
             component="img"
@@ -63,32 +97,62 @@ export default function MultiActionAreaCard({ key }) {
       </Card>
 
 
-      <Dialog
-        // fullScreen={fullScreen}
+
+      <Popover
+        id="mouse-over-popover"
+        // sx={{
+        //   pointerEvents: 'none',
+        // }}
         open={open}
-        onClose={handleClose}
-        aria-labelledby="responsive-dialog-title"
+        anchorEl={anchorEl}
+        anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'left',
+        }}
+        onClose={handlePopoverClose}
+        
       >
-        <DialogTitle id="responsive-dialog-title">
-          {"Use Google's location service?"}
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            Let Google help apps determine location. This means sending anonymous
-            location data to Google, even when no apps are running.
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button autoFocus onClick={handleClose}>
-            Disagree
-          </Button>
-          <Button onClick={handleClose} autoFocus>
-            Agree
-          </Button>
-        </DialogActions>
-      </Dialog>
+        <div>
+        <Paper style={{ padding: '20px', width: '300px' }}>
+          <Typography variant="body1"><strong>Unique ID:</strong> charger_101</Typography>
+          <Typography variant="body1"><strong>Dock Number:</strong> 1</Typography>
+          <Typography variant="body1"><strong>Charger Status:</strong> Available</Typography>
+          <Typography variant="body1"><strong>Price Per Watt:</strong> 10</Typography>
+          <Typography variant="body1"><strong>Current Type:</strong> AC</Typography>
+          <Typography variant="body1"><strong>Charger Type:</strong> Type 2</Typography>
+          <Typography variant="body1"><strong>Charger Timing:</strong> 10 am to 10 pm</Typography>
+          <Typography variant="body1"><strong>Available 24hrs:</strong> Yes</Typography> 
+
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <Box mt={2} >
+                <TimePicker
+                  label="Appointment Time"
+                  value={appointmentTime ? appointmentTime : '10:00:00'}
+                  onChange={(time) => handleTimeChangeFrom(time)}
+                  defaultValue={dayjs('2022-04-17T15:30')}                />
+          </Box>
+          </LocalizationProvider>
+          <Box mt={2} display="flex" justifyContent="space-between">
+            <Button variant="contained" color="primary" onClick={handleBookAppointment}>
+              Book
+            </Button>
+            <Button variant="outlined" color="secondary" onClick={handlePopoverClose}>
+              Cancel
+            </Button>
+          </Box>
+        </Paper>
+        </div>
+      </Popover>
+      {/* <Backdrop open={open} onClick={handlePopoverClose} /> */}
+
 
 
     </div>
   );
 }
+
+

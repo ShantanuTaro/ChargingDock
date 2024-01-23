@@ -2,6 +2,7 @@ import "./style.css";
 import "leaflet/dist/leaflet.css";
 import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from "react-leaflet";
 import MarkerClusterGroup from "react-leaflet-cluster";
+import 'leaflet/dist/leaflet.css';
 
 import { Icon, divIcon, point } from "leaflet";
 import { useEffect, useState } from "react";
@@ -73,7 +74,7 @@ export default function LeafletMapView() {
   return (<>
     <button onClick={getCurrentLocation}>Get Current Location</button>
 
-    <MapContainer center={center} zoom={13}>
+    <MapContainer center={center} zoom={9}>
       {/* OPEN STREEN MAPS TILES */}
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

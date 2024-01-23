@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import "./home.css";
+import NavigationTabs from "./NavigationsTab";
 
 
 export const Home = () => {
@@ -31,18 +32,8 @@ export const Home = () => {
         </button>
       </div>
         </div>
-      {/* <button onClick={routeLoginChange}>Login</button>
-       <button onClick={routeRegisterChange}>Register</button> */}
-        
-
     </div>
-    <button ><Link to='/customerRegistration'>Customer Registeration</Link></button> 
-    <button ><Link to='/customerLogin'>Customer Login</Link></button> 
-    <button ><Link to='/agentLogin'>Agent Login</Link></button> 
-    <button ><Link to='/agentRegistration'>Agent Registration</Link></button> 
-    <button ><Link to='/chargerRegistration'>Charger Registration</Link></button> 
-    <button ><Link to='/mapView'>Map View</Link></button> 
-
+      <NavigationTabs/>
 
      </div>
   );
