@@ -16,8 +16,17 @@ const listChargers = (req,res,next) =>{
 
 const chargerRegistration = async (req,res,next) =>{
   try {
-      const { uniqueId, dockNumber, chargerStatus, pricePerWatt, currentType, chargerType, chargerTiming } = req.body;
-      let newCharger = new User.ChargerModel({ uniqueId, dockNumber, chargerStatus, pricePerWatt, currentType, chargerType, chargerTiming  });
+      const { 
+        uniqueId, 
+        dockNumber, 
+        chargerStatus, 
+        pricePerWatt, 
+        currentType, 
+        chargerType, 
+        chargerTimingFrom,
+        chargerTimingTo,
+        available24hrs } = req.body;
+      let newCharger = new User.ChargerModel({ uniqueId, dockNumber, chargerStatus, pricePerWatt, currentType, chargerType, chargerTimingFrom,chargerTimingTo, available24hrs});
       
       const savedUser = await newCharger.save();
       res.json(savedUser);

@@ -6,75 +6,127 @@ import "./register.css";
 export const Register = () => {
   const url = 'http://localhost:3000/customerRegistration';
 
-  const [userData, setUserData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: ''
-  });
+  // const [userData, setUserData] = useState({
+  //   firstName: '',
+  //   lastName: '',
+  //   email: '',
+  //   password: ''
+  // });
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setUserData((prevUserData) => ({
-      ...prevUserData,
-      [name]: value,
-    }));
-  };
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   let navigate = useNavigate();
 
-  localStorage.setItem('userData', JSON.stringify(userData));
-  const handleSubmit = async (e) => {
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+
+  //   try {
+  //     const response = await axios.post(url, userData);
+
+  //     if (response.status === 200) {
+  //       let path = `/success`;
+  //       navigate(path);
+  //       console.log('User created successfully');
+  //       // Optionally, you can reset the form or perform any other action
+  //     } else {
+  //       console.error('Failed to create user');
+  //     }
+  //   } catch (error) {
+  //     console.error('Error creating user:', error);
+  //   }
+  // };
+
+
+  // Handle form submission
+  const handleSubmit = async(e) => {
     e.preventDefault();
 
+    // Perform registration logic here (e.g., API call)
     try {
-      const response = await axios.post(url, userData);
 
-      if (response.status === 200) {
-        let path = `/success`;
-        navigate(path);
-        console.log('User created successfully');
-        // Optionally, you can reset the form or perform any other action
-      } else {
-        console.error('Failed to create user');
-      }
-    } catch (error) {
-      console.error('Error creating user:', error);
-    }
+      const userData={
+          firstName: firstName,
+          lastName: lastName,
+          email: email,
+          password: password
+        }
+          const response = await axios.post(url,userData); //work on this/........
+    
+          if (response.status === 200) {
+            let path = `/success`;
+            navigate(path);
+            console.log('User created successfully');
+            // Optionally, you can reset the form or perform any other action
+          } else {
+            console.error('Failed to create user');
+          }
+        } catch (error) {
+          console.error('Error creating user:', error);
+        }
+    // Clear form fields after submission
+    setFirstName('');
+    setLastName('');
+    setEmail('');
+    setPassword('');
   };
 
-
   return (
-    <div className="">
-      <div className="container">
-        <h3>Register form</h3>
-        <form action="/customerRegistration" method="POST" onSubmit={handleSubmit}>
-          <div className="form-group mb-3">   
-
-            <label>First name</label>
-            <input type="text" className="form-control" placeholder="First name" name="firstName" value={userData.firstName}
-              onChange={handleInputChange} />
-          </div>
-          <div className="form-group mb-3">
-            <label>Last name</label>
-            <input type="text" className="form-control" placeholder="Last name" name="lastName" value={userData.lastName}
-              onChange={handleInputChange} />
-          </div>
-          <div className="form-group mb-3">
-            <label>Email ID</label>
-            <input type="text" className="form-control" placeholder="Email" name="email" value={userData.email}
-              onChange={handleInputChange} />
-          </div>
-          <div className="form-group mb-3">
-            <label>Password</label>
-            <input type="password" className="form-control" placeholder="Password" name="password" value={userData.password}
-              onChange={handleInputChange} />
-          </div>
-          <div className="d-grid mt-3">
-            <button type="submit" className="btn btn-primary form-control">Submit </button>
-          </div>
-        </form>
-      </div>
+    <div className="registration-container">
+      <h2>Registration Form</h2>
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label className='label' htmlFor="firstName">First Name:</label>
+          <input
+            className='input'
+            type="text"
+            id="firstName"
+            name="firstName"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label className='label' htmlFor="lastName">Last Name:</label>
+          <input
+            className='input'
+            type="text"
+            id="lastName"
+            name="lastName"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label className='label' htmlFor="email">Email:</label>
+          <input
+            className='input'
+            type="email"
+            id="email"
+            name="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label className='label' htmlFor="password">Password:</label>
+          <input
+            className='input'
+            type="password"
+            id="password"
+            name="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </div>
+        <button className="button" type="submit">Register</button>
+      </form>
     </div>
   );
 }
