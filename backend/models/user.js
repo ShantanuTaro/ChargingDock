@@ -30,7 +30,7 @@ const customerSchema = new Schema({
    email : String,
    password : String,
    chargerLocation : String,
-   chargerLocationPlusCode: String, //for now Plus code from GOOGLE Maps ---> HMGQ+M3 Pune, Maharashtra
+   chargerLocationCode: String, //Longetitude and Latitude
    noOfChargers : Number,
    uniqueId : String
 });
@@ -61,5 +61,8 @@ const AgentModel = mongoose.model('AgentDetails', agentSchema);
 });
 
 const ChargerModel = mongoose.model('ChargerDetails', chargerSchema);
+
+///
+
 
  module.exports = {CustomerModel, AgentModel, ChargerModel}

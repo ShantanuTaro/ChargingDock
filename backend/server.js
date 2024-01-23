@@ -5,6 +5,11 @@ const mongoose= require("mongoose");
 const cors =require('cors')
 const userRoute = require('./routes/userRoute')
 let app = express()
+const user = require("./models/user");
+
+
+
+
 
 connectDB()
 const db = mongoose.connection;

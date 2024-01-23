@@ -25,8 +25,8 @@ const listAgents = (req,res,next) =>{
 
 const agentRegistration = async (req,res,next) =>{
   try {
-      const { firstName, lastName, email, password, chargerLocation, chargerLocationPlusCode, noOfChargers } = req.body;
-      let newAgent = new User.AgentModel({ firstName, lastName, email, password, chargerLocation, chargerLocationPlusCode, noOfChargers, uniqueId  });
+      const { firstName, lastName, email, password, chargerLocation, chargerLocationCode, noOfChargers } = req.body;
+      let newAgent = new User.AgentModel({ firstName, lastName, email, password, chargerLocation, chargerLocationCode, noOfChargers, uniqueId  });
       
       newAgent.uniqueId = uniqueId();
 
