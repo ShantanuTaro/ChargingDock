@@ -85,7 +85,9 @@ export const Login = () => {
                 onChange={handleInputChange} />
             </div>
             <div className="d-grid mt-3">
+              <center>
               <button type="submit" className="button">Submit</button>
+              </center>
                 <Snackbar
                   open={snackbarOpen}
                   autoHideDuration={6000}

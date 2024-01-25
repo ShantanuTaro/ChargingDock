@@ -167,7 +167,9 @@ const AgentRegistration = () => {
             required
           />
         </div>
+        <center>
         <button className="button" type="submit">Register</button>
+        </center>
       </form>
     </div>
   );

@@ -125,7 +125,9 @@ export const Register = () => {
             required
           />
         </div>
+        <center>
         <button className="button" type="submit">Register</button>
+        </center>
       </form>
     </div>
   );
