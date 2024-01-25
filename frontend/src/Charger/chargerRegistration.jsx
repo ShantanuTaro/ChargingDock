@@ -245,8 +245,9 @@ const ChargerRegistration = () => {
             />
           </span>
         </div>
-
+        <center>
         <button className='button' type="submit">Register Charger</button>
+        </center>
       </form>
     </div>
   );
