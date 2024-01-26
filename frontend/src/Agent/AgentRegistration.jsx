@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './Agent.css'; // Import the CSS file for styling
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import { useDispatch } from "react-redux";
+import { register } from '../store/reducers/auth';
 
 const AgentRegistration = () => {
   const url = 'http://localhost:3000/agentRegistration';
@@ -15,50 +16,26 @@ const AgentRegistration = () => {
   const [chargerLocationCode, setChargerLocationCode] = useState('');
   const [noOfChargers, setNoOfChargers] = useState(0);
   const [uniqueId, setUniqueId] = useState('');
-// firstName
-// lastName
-// email
-// password
-// chargerLocation
-// chargerLocationCode
-// noOfChargers
-// uniqueId
-
-  let navigate = useNavigate();
+  let navigate = useNavigate(); 
+  const dispatch = useDispatch() 
 
   // Handle form submission
   const handleSubmit = async(e) => {
     e.preventDefault();
-
-    // Perform registration logic here (e.g., API call)
-    try {
-      const userData={
-        firstName: firstName,
-        lastName: lastName,
-        email:email,
-        password:password,
-        chargerLocation: chargerLocation,
-        chargerLocationCode: chargerLocationCode,
-        noOfChargers: noOfChargers,
-        uniqueId: uniqueId
-      }
-      const response = await axios.post(url,userData); //work on this/........
-
-      if (response.status === 200) {
-        let path = `/chargerRegistration`;
-        navigate(path);
-        console.log('User created successfully');
-        // Optionally, you can reset the form or perform any other action
-      } else {
-        console.error('Failed to create user');
-      }
-    } catch (error) {
-      console.error('Error creating user:', error);
+    let path = `/chargerRegistration`;
+    const userData={
+      firstName: firstName,
+      lastName: lastName,
+      email:email,
+      password:password,
+      chargerLocation: chargerLocation,
+      chargerLocationCode: chargerLocationCode,
+      noOfChargers: noOfChargers,
     }
-    // Clear form fields after submission
-    // setFullName('');
-    // setEmail('');
-    // setPassword('');
+    dispatch(register({userData})).then((action)=>{
+      //localStorage.setItem("accessToken",action.payload.token)
+      navigate(path);
+    })
   };
 
   return (
