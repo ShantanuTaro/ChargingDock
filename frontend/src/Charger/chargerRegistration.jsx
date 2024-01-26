@@ -28,6 +28,7 @@ const ChargerRegistration = () => {
     chargerTimingTo:'',
     available24hrs: false,
   });
+  
   const handleTimeChangeFrom = ( time) => {
     const time24hr = new Date(`${time}`).toLocaleTimeString('en-US', { hour12: false });
     // Copy the current formData
@@ -87,27 +88,13 @@ const ChargerRegistration = () => {
       const response = await axios.post(url, formData); //work on this/........
 
       if (response.status === 200) {
-        console.log('User created successfully');
+        console.log('User created successfully',formData);
       } else {
         console.error('Failed to create user');
       }
     } catch (error) {
       console.error('Error creating user:', error,'',formData);
     }
-    // Clear form fields after submission
-    // setFormData({
-    //   uniqueId: generateUniqueId(),
-    //   dockNumber: '',
-    //   chargerStatus: '',
-    //   pricePerWatt: '',
-    //   currentType: '',
-    //   chargerType: '',
-    //   chargerTiming: { from: null, to: null }, // Use an object to store FROM and TO times
-    //   available24hrs: false,
-    // })
-
-    console.log(formData);
-    console.log('formData.chargerTimingFrom',formData.chargerTimingFrom);
   };
 
 
@@ -142,8 +129,6 @@ const ChargerRegistration = () => {
         </div>
 
         <div className="form-group">
-          {/* <label id="demo-select-small-label" className='label' htmlFor="chargerType">Charger Type:</label> */}
-          {/* <label className='label' htmlFor="chargerType">Charger Type:</label> */}
           <FormControl sx={{ minWidth: '100%', marginBottom: '5px' }} size="small" >
             <InputLabel id="demo-select-small-label" >Charger Status</InputLabel>
             <Select
@@ -241,7 +226,7 @@ const ChargerRegistration = () => {
               id="available24hrs"
               name="available24hrs"
               checked={formData.available24hrs}
-              onChange={(e) => setFormData({ ...formData, available24hrs: e.target.value })}
+              onClick={(e) => setFormData({ ...formData, available24hrs: !formData.available24hrs})}
             />
           </span>
         </div>
