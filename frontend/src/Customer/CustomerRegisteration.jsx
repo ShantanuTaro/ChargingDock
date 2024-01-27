@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import "./register.css";
+import "./CustomerRegisteration.css";
 
-export const Register = () => {
+export const CustomerRegisteration = () => {
   const url = 'http://localhost:3000/customerRegistration';
 
   const [firstName, setFirstName] = useState('');

@@ -97,6 +97,9 @@ const ChargerRegistration = () => {
     }
   };
 
+// let count =true
+// // condition1 && condition2
+// console.log('count',!count);
 
   return (
     <div className={`charger-registration animate__animated animate__fadeIn`}>
@@ -196,7 +199,20 @@ const ChargerRegistration = () => {
           </FormControl>
         </div>
 
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <div className="form-group">
+          <label htmlFor="available24hrs" style={{ marginRight: '10px' }}>Available for 24hrs:</label>
+          <span>
+            <input
+              type="checkbox"
+              id="available24hrs"
+              name="available24hrs"
+              checked={formData.available24hrs}
+              onClick={(e) => setFormData({ ...formData, available24hrs: !formData.available24hrs})}
+            />
+          </span>
+        </div>
+
+        {(!formData.available24hrs) && (<LocalizationProvider dateAdapter={AdapterDayjs}>
           <div className="form-group">
             <label className='label' htmlFor="chargerType">Charger Timing:</label>
             <div className="time-picker-container">
@@ -216,20 +232,7 @@ const ChargerRegistration = () => {
               />
             </div>
           </div>
-        </LocalizationProvider>
-
-        <div className="form-group">
-          <label htmlFor="available24hrs" style={{ marginRight: '10px' }}>Available for 24hrs:</label>
-          <span>
-            <input
-              type="checkbox"
-              id="available24hrs"
-              name="available24hrs"
-              checked={formData.available24hrs}
-              onClick={(e) => setFormData({ ...formData, available24hrs: !formData.available24hrs})}
-            />
-          </span>
-        </div>
+        </LocalizationProvider>)}
         <center>
         <button className='button' type="submit">Register Charger</button>
         </center>

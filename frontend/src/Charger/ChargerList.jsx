@@ -1,9 +1,8 @@
 import { useMediaQuery, useTheme } from '@mui/material';
-import MultiActionAreaCard from './card';
-import './success.css'
-import HomePage from './card';
+import './ChargerList.css'
+import ChargingDockCard from './ChargerCard';
 
-function SuccessMessage() {
+function ChargerList() {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
   const cardData = [
@@ -18,10 +17,10 @@ function SuccessMessage() {
   return (
     <div style={{ display: 'flex', justifyContent: 'space-around', marginTop: '20px', flexWrap: isSmallScreen ? 'nowrap' : 'wrap' }}>
     {cardData.map((card) => (
-      <HomePage key={card.id} title={card.title} content={card.content} />
+      <ChargingDockCard key={card.id} title={card.title} content={card.content} />
     ))}
   </div>
   );
 }
 
-export default SuccessMessage;
+export default ChargerList;

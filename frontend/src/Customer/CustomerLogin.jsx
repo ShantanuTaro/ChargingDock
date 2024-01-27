@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import MuiAlert from '@mui/material/Alert';
-import './register.css'
+import './CustomerRegisteration.css'
 import { Box, Button, Grid, Snackbar, Stack } from "@mui/material";
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
-export const Login = () => {
+export const CustomerLogin = () => {
   let isValid = true
   const url = 'http://localhost:3000/customerLogin';
 
