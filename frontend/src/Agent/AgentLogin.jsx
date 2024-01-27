@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import MuiAlert from '@mui/material/Alert';
-import '../Pages/register.css'
+import '../Customer/CustomerRegisteration.css'
 import { Box, Button, Grid, Snackbar, Stack } from "@mui/material";
 
 const Alert = React.forwardRef(function Alert(props, ref) {
