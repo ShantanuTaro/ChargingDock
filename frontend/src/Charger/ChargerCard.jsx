@@ -3,17 +3,14 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { Backdrop, Box, Button, CardActionArea, CardActions, Chip, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Modal, Paper, Popover, Slide, Stack, TextField, useMediaQuery, useTheme } from '@mui/material';
-import DetailModal from './details';
-import './success.css'
-import styled from '@emotion/styled';
+import { Box, Button, CardActionArea, CardActions, Chip, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Modal, Paper, Popover, Slide, Stack, TextField, useMediaQuery, useTheme } from '@mui/material';
+import './ChargerList.css'
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { convertTo12HourFormat } from '../Common/time24hr';
 import dayjs from 'dayjs';
 
-export default function MultiActionAreaCard({ key }) {
+export default function ChargerCard({ key }) {
   const theme = useTheme();
   const currentTime = dayjs().add(30, 'minutes');
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));

@@ -70,10 +70,19 @@ export default function NavigationTabs() {
           component="button" // You can use 'button' as a component to avoid anchor styling
           underline="none"    // To remove the underline
           style={{ color: '#048320' }}  // To set the color to grey
-          to="/success"
+          to="/ChargingDockList"
         >
           <GrainIcon sx={{ mr: 0.5 }} fontSize="inherit" />
           Main Page
+        </Link>
+        <Link
+          component="button" // You can use 'button' as a component to avoid anchor styling
+          underline="none"    // To remove the underline
+          style={{ color: '#048320' }}  // To set the color to grey
+          to="/AgentDockRegistration"
+        >
+          <GrainIcon sx={{ mr: 0.5 }} fontSize="inherit" />
+          Agent Dock Registration
         </Link>
       </Breadcrumbs>
     </div>
